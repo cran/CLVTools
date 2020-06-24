@@ -43,9 +43,8 @@ est.pnbd
 #  est.pnbd <- pnbd(clv.data = clv.apparel,
 #                       start.params.model = c(r=1, alpha = 2, s = 1, beta = 2),
 #                       optimx.args = list(control=list(trace=5),
-#                                         method="Nelder-Mead",
-#                                         upper=NULL,
-#                                         lower=NULL))
+#                                         method="Nelder-Mead"
+#                                         ))
 
 ## ----param-summary------------------------------------------------------------
 #Full detailed summary of the parameter estimates
@@ -72,6 +71,12 @@ logLik(est.pnbd)
 # Variance-Covariance Matrix at maximum
 vcov(est.pnbd)
 
+
+## ----estimate-ggomnbd, eval=FALSE---------------------------------------------
+#  est.ggomnbd <- ggomnbd(clv.data = clv.apparel,
+#                       start.params.model = c(r=0.7, alpha=5, b=0.005,  s=0.02, beta=0.001),
+#                       optimx.args = list(control=list(trace=5),
+#                                         method="Nelder-Mead"))
 
 ## ----predict-model------------------------------------------------------------
 results <- predict(est.pnbd)
@@ -103,7 +108,7 @@ data("apparelDynCov")
 apparelDynCov
 
 ## ----Cov-setStatic------------------------------------------------------------
-pnbd.static<- SetStaticCovariates(clv.data = clv.apparel, 
+clv.static<- SetStaticCovariates(clv.data = clv.apparel, 
                                       data.cov.life = apparelStaticCov, 
                                       data.cov.trans = apparelStaticCov,
                                       names.cov.life = c("Gender", "Channel"), 
@@ -111,7 +116,7 @@ pnbd.static<- SetStaticCovariates(clv.data = clv.apparel,
                                       name.id = "Id")
 
 ## ----Cov-setDynamic, eval=FALSE, message=FALSE, warning=TRUE------------------
-#  pnbd.dyn <- SetDynamicCovariates(clv.data = clv.apparel,
+#  clv.dyn <- SetDynamicCovariates(clv.data = clv.apparel,
 #                                       data.cov.life = apparelDynCov,
 #                                       data.cov.trans = apparelDynCov,
 #                                       names.cov.life = c("Marketing", "Gender", "Channel"),
@@ -120,13 +125,13 @@ pnbd.static<- SetStaticCovariates(clv.data = clv.apparel,
 #                                       name.date = "Cov.Date")
 
 ## ----Static-cov-estimate, message=TRUE, warning=FALSE-------------------------
-est.pnbd.static <- pnbd(pnbd.static, 
+est.pnbd.static <- pnbd(clv.static, 
                          start.params.model = c(r=1, alpha = 2, s = 1, beta = 2),
                          start.params.life = c(Gender=0.6, Channel=0.4),
                          start.params.trans = c(Gender=0.6, Channel=0.4))
 
 ## ----Dyn-cov-estimate, eval=FALSE---------------------------------------------
-#  est.pnbd.dyn <- pnbd(pnbd.dyn,
+#  est.pnbd.dyn <- pnbd(clv.dyn,
 #                       start.params.model = c(r=1, alpha = 2, s = 1, beta = 2),
 #                       start.params.life = c(Marketing=0.5, Gender=0.6, Channel=0.4),
 #                       start.params.trans = c(Marketing=0.5, Gender=0.6, Channel=0.4))
@@ -140,19 +145,22 @@ summary(est.pnbd.static)
 #  summary(est.pnbd.cor)
 
 ## ----reg-advOptions-----------------------------------------------------------
-est.pnbd.reg <- pnbd(pnbd.static, 
+est.pnbd.reg <- pnbd(clv.static, 
                          start.params.model = c(r=1, alpha = 2, s = 1, beta = 2),
                          reg.lambdas = c(trans=100, life=100))
 summary(est.pnbd.reg)
 
 ## ----constr-advOptions--------------------------------------------------------
-est.pnbd.constr <- pnbd(pnbd.static, 
+est.pnbd.constr <- pnbd(clv.static, 
                          start.params.model = c(r=1, alpha = 2, s = 1, beta = 2),
                          start.params.constr = c(Gender=0.6),
                          names.cov.constr=c("Gender"))
 summary(est.pnbd.constr)
 
 ## ----doFuture, eval=FALSE-----------------------------------------------------
+#    # disable multithreading for data.table (to avoid nested parallelism)
+#    setDTthreads(1)
+#  
 #    library("doFuture")
 #    registerDoFuture()
 #    plan("multisession")
