@@ -165,3 +165,31 @@ summary(est.pnbd.constr)
 #    registerDoFuture()
 #    plan("multisession")
 
+## ----spending-load-data and initialize----------------------------------------
+data("apparelTrans")
+apparelTrans
+
+clv.apparel <- clvdata(apparelTrans,  
+                       date.format="ymd", 
+                       time.unit = "week",
+                       estimation.split = 40,
+                       name.id = "Id",
+                       name.date = "Date",
+                       name.price = "Price")
+
+## ----spending-estimate-model--------------------------------------------------
+est.gg<- gg(clv.data = clv.apparel)
+est.gg
+
+## ----spendsing-estimate-model2, eval=TRUE-------------------------------------
+est.gg<- gg(clv.data = clv.apparel, remove.first.transaction=FALSE)
+est.gg
+
+## ----spending-predict-model---------------------------------------------------
+results.spending <- predict(est.gg)
+print(results.spending)
+
+## ----spending-plot-model4, fig.height=4.40, fig.width=9-----------------------
+plot(est.gg)
+
+

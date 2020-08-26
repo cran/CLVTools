@@ -1,6 +1,6 @@
 #' @export
-#' @include class_clv_fitted_staticcov.R
-print.clv.fitted.static.cov <- function(x, digits = max(3L, getOption("digits") - 3L), ...){
+#' @include class_clv_fitted_transactions_staticcov.R
+print.clv.fitted.transactions.static.cov <- function(x, digits = max(3L, getOption("digits") - 3L), ...){
   # print standard parts
   NextMethod()
 
@@ -15,11 +15,11 @@ print.clv.fitted.static.cov <- function(x, digits = max(3L, getOption("digits") 
 #' @order 2
 #' @include class_clv_data_staticcovariates.R
 #' @export
-summary.clv.fitted.static.cov <- function(object, ...){
+summary.clv.fitted.transactions.static.cov <- function(object, ...){
 
   # Get basic structure from nocov
   res <- NextMethod()
-  class(res) <- c("summary.clv.fitted.static.cov", class(res))
+  class(res) <- c("summary.clv.fitted.transactions.static.cov", class(res))
 
   # Add further optimization options -----------------------------------------------
   #   Regularization
@@ -48,9 +48,9 @@ summary.clv.fitted.static.cov <- function(object, ...){
 #' @importFrom stats coef na.omit setNames
 #' @importFrom optimx coef<-
 #' @importFrom utils tail
-#' @include class_clv_fitted_staticcov.R
+#' @include class_clv_fitted_transactions_staticcov.R
 #' @export
-coef.clv.fitted.static.cov <- function(object, ...){
+coef.clv.fitted.transactions.static.cov <- function(object, ...){
 
   # Covariates params -----------------------------------------------------------------------------------
 
@@ -101,11 +101,12 @@ coef.clv.fitted.static.cov <- function(object, ...){
   #   append correlation param, if exists and should be returned. If not included here, it is removed from nocov param vec
   names.original.named.prefixed.all <- names(original.scale.coef.model)
 
-  if(object@estimation.used.correlation)
+  if(clv.model.estimation.used.correlation(clv.model = object@clv.model)){
     names(names.original.named.prefixed.all) <- c(object@clv.model@names.prefixed.params.model,
-                                                  object@name.prefixed.cor.param.m)
-  else
+                                                  object@clv.model@name.prefixed.cor.param.m)
+  }else{
     names(names.original.named.prefixed.all) <- object@clv.model@names.prefixed.params.model
+  }
 
   # Content + prefixed names for covs
   names.original.named.prefixed.all <- c(names.original.named.prefixed.all,
@@ -127,9 +128,9 @@ coef.clv.fitted.static.cov <- function(object, ...){
 }
 
 
-#' @include all_generics.R class_clv_fitted_staticcov.R
+#' @include all_generics.R class_clv_fitted_transactions_staticcov.R
 #' @importFrom methods show
 #' @export
-#' @rdname clv.fitted.static.cov-class
-setMethod(f = "show", signature = signature(object="clv.fitted.static.cov"), definition = function(object){
+#' @rdname clv.fitted.transactions.static.cov-class
+setMethod(f = "show", signature = signature(object="clv.fitted.transactions.static.cov"), definition = function(object){
   print(x=object)})
