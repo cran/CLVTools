@@ -157,14 +157,6 @@ est.pnbd.constr <- pnbd(clv.static,
                          names.cov.constr=c("Gender"))
 summary(est.pnbd.constr)
 
-## ----doFuture, eval=FALSE-----------------------------------------------------
-#    # disable multithreading for data.table (to avoid nested parallelism)
-#    setDTthreads(1)
-#  
-#    library("doFuture")
-#    registerDoFuture()
-#    plan("multisession")
-
 ## ----spending-load-data and initialize----------------------------------------
 data("apparelTrans")
 apparelTrans
