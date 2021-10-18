@@ -1,7 +1,7 @@
 Package: CLVTools
 Title: Tools for Customer Lifetime Value Estimation
-Version: 0.8.0
-Date: 2021-03-22
+Version: 0.8.1
+Date: 2021-10-13
 Authors@R: c(
     person(given="Patrick", family="Bachmann",    email = "patrick.bachmann@business.uzh.ch", role = c("cre","aut")),
     person(given="Niels",   family="Kuebler",     email = "niels.kuebler@uzh.ch", role = "aut"),
@@ -31,15 +31,14 @@ Description:
     Further, we provide an implementation of the Gamma/Gamma model to model the spending process of individuals.
 Imports: data.table (>= 1.12.0), ggplot2 (>= 3.2.0), lubridate (>=
         1.7.8), Matrix (>= 1.2-17), MASS, optimx (>= 2019-12.02),
-        stats, utils
+        Rcpp(>= 0.12.12), stats, utils
 Suggests: covr, future, knitr, rmarkdown, testthat
 License: GPL-3
 URL: https://github.com/bachmannpatrick/CLVTools
 BugReports: https://github.com/bachmannpatrick/CLVTools/issues
 NeedsCompilation: yes
 SystemRequirements: C++11
-LinkingTo: Rcpp(>= 0.12.12), RcppArmadillo (>= 0.9.500.2.0), RcppGSL
-        (>= 0.3.7)
+LinkingTo: Rcpp, RcppArmadillo (>= 0.9.500.2.0), RcppGSL (>= 0.3.7)
 LazyLoad: yes
 Encoding: UTF-8
 Collate: 'CLVTools.R' 'RcppExports.R' 'all_generics.R'
@@ -95,9 +94,9 @@ Collate: 'CLVTools.R' 'RcppExports.R' 'all_generics.R'
         'pnbd_dyncov_LL.R' 'pnbd_dyncov_createwalks.R'
         'pnbd_dyncov_expectation.R' 'pnbd_dyncov_makewalks.R'
         'pnbd_dyncov_palive.R'
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
-Packaged: 2021-03-23 14:05:07 UTC; patrik
+Packaged: 2021-10-13 16:51:34 UTC; patrik
 Author: Patrick Bachmann [cre, aut],
   Niels Kuebler [aut],
   Markus Meierer [aut],
@@ -106,4 +105,4 @@ Author: Patrick Bachmann [cre, aut],
   Patrik Schilter [aut]
 Maintainer: Patrick Bachmann <patrick.bachmann@business.uzh.ch>
 Repository: CRAN
-Date/Publication: 2021-03-23 16:40:08 UTC
+Date/Publication: 2021-10-18 22:50:09 UTC

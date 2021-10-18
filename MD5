@@ -1,7 +1,7 @@
-d434a5b1a88f6b50703d9ecabcb81cde *DESCRIPTION
-8521fea1775f7d66d3b0c0ff0cba305e *NAMESPACE
-2e774805c1ebe1ce5fd504da63fac704 *NEWS.md
-ab599885a0742437e94416f18f6b1da5 *R/CLVTools.R
+d3139a9afab43851f1b9858c04f49c35 *DESCRIPTION
+3a2abfeec349a4157374ed693d6f8eba *NAMESPACE
+c797d5b9e2495bc176eb2fa03330a85d *NEWS.md
+f3ff37e2083f7d46328f5a9f4c55d806 *R/CLVTools.R
 18a3bf180f9b9119155e14b201f24ac3 *R/RcppExports.R
 5709f64dd5588cbba95cbd041ec259c3 *R/all_generics.R
 7ba92d897a94b395ef085f8d5b54174f *R/class_clv_bgnbd.R
@@ -87,14 +87,14 @@ bbefef84e03d3909728a73d97fc50bb7 *R/pnbd_dyncov_LL.R
 7c15399c33393dd806cc20868211c3fa *R/pnbd_dyncov_expectation.R
 315e24a58e65cb45e6c9099fa65ef4a8 *R/pnbd_dyncov_makewalks.R
 316c091390d51588dae34e5c9c6efb7e *R/pnbd_dyncov_palive.R
-aad638f32b09880d0cada53c8c6b15b3 *build/vignette.rds
+dd4f6577303d258d2185cfe92523a522 *build/vignette.rds
 62bd952e7d3365e47cde236bbf10d30d *data/apparelDynCov.rda
 c6c61a5e999185a8096631536e2fe81a *data/apparelStaticCov.rda
 61cefff90967386224ac3b41e5e2041e *data/apparelTrans.rda
 7e3eedcb32b6c0cb95bcaae7efb61bb3 *data/cdnow.rda
 8b4d5b4fde686b1844683f6e575aef1c *inst/doc/CLVTools.R
 f2e91d50914b0ca364f2b93cc63c6fbd *inst/doc/CLVTools.Rmd
-14299c560a366b383a7142183c43d1d2 *inst/doc/CLVTools.pdf
+ed23b737d30b19f5cdf000ee87a98379 *inst/doc/CLVTools.pdf
 1473437ba674d1895880e45fa1246b33 *man/CLVTools-package.Rd
 06b726384af951e20f7949b1d3a68cd8 *man/SetDynamicCovariates.Rd
 bd94e824d0bb5a2492fbbfbdc7bcbe5f *man/SetStaticCovariates.Rd
@@ -173,7 +173,7 @@ a2688dce0dcd53ac97e3af5d1d88ac8d *man/vec_gsl_hyp2f0_e.Rd
 6dd955db7e723a2df746ad6ea412c45b *man/vec_gsl_hyp2f1_e.Rd
 98eeabedd1dcf139bc8011ec3a318c5c *src/Makevars
 97e98a79fb1df4af44f4c0ff753e5fb8 *src/Makevars.win
-106d76e8bd4b2d5a5c03f1e4effc73b0 *src/RcppExports.cpp
+45afe5ee71795ee577b546b3aa5caa9d *src/RcppExports.cpp
 c714455b71c46f039c1258d41b99b471 *src/bgnbd.cpp
 c2e0888e8dcafb9771a61b36807a47ae *src/bgnbd.h
 8884663cfe7b5e1aeb9690f991f2ed39 *src/clv_vectorized.cpp
