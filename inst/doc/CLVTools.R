@@ -89,6 +89,14 @@ print(results)
 ## ----plot-model3, eval = FALSE------------------------------------------------
 #  predict(est.pnbd, prediction.end = "2006-05-08")
 
+## ----plot-actual, fig.height=4.40, fig.width=9--------------------------------
+plot(clv.apparel)
+
+
+## ----plot-interpurchase, fig.height=4.40, fig.width=9-------------------------
+plot(clv.apparel, which="interpurchasetime")
+
+
 ## ----plot-model, fig.height=4.40, fig.width=9---------------------------------
 plot(est.pnbd)
 
@@ -98,6 +106,9 @@ plot(est.pnbd)
 
 ## ----predict-model3, eval = FALSE---------------------------------------------
 #  plot(est.pnbd, prediction.end = "2006-05-08", cumulative = TRUE)
+
+## ----predict-model4, eval = FALSE---------------------------------------------
+#  plot(est.pnbd, which="pmf", trans.bins=0:5, label.remaining="6+")
 
 ## ----Cov-staticData-----------------------------------------------------------
 data("apparelStaticCov")

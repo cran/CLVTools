@@ -1,9 +1,9 @@
 Package: CLVTools
 Title: Tools for Customer Lifetime Value Estimation
-Version: 0.8.1
-Date: 2021-10-13
+Version: 0.9.0
+Date: 2022-01-07
 Authors@R: c(
-    person(given="Patrick", family="Bachmann",    email = "patrick.bachmann@business.uzh.ch", role = c("cre","aut")),
+    person(given="Patrick", family="Bachmann",    email = "pbachma@ethz.ch", role = c("cre","aut")),
     person(given="Niels",   family="Kuebler",     email = "niels.kuebler@uzh.ch", role = "aut"),
     person(given="Markus",  family="Meierer",     email = "markus.meierer@business.uzh.ch", role = "aut"),
     person(given="Jeffrey", family="Naef",        email = "naef@stat.math.ethz.ch",role = "aut"),
@@ -32,7 +32,7 @@ Description:
 Imports: data.table (>= 1.12.0), ggplot2 (>= 3.2.0), lubridate (>=
         1.7.8), Matrix (>= 1.2-17), MASS, optimx (>= 2019-12.02),
         Rcpp(>= 0.12.12), stats, utils
-Suggests: covr, future, knitr, rmarkdown, testthat
+Suggests: covr, knitr, rmarkdown, testthat
 License: GPL-3
 URL: https://github.com/bachmannpatrick/CLVTools
 BugReports: https://github.com/bachmannpatrick/CLVTools/issues
@@ -64,10 +64,11 @@ Collate: 'CLVTools.R' 'RcppExports.R' 'all_generics.R'
         'class_clv_time_days.R' 'class_clv_time_hours.R'
         'class_clv_time_weeks.R' 'class_clv_time_years.R'
         'clv_template_controlflow_estimate.R'
+        'clv_template_controlflow_pmf.R'
         'clv_template_controlflow_predict.R' 'data.R'
         'f_DoExpectation.R' 'f_clvdata_inputchecks.R'
-        'f_clvfitted_inputchecks.R' 'f_generics_clvdata.R'
-        'f_generics_clvfitted.R' 'f_generics_clvfitted_estimate.R'
+        'f_clvfitted_inputchecks.R' 'f_generics_clvfitted.R'
+        'f_generics_clvfitted_estimate.R'
         'f_generics_clvfittedspending.R'
         'f_generics_clvfittedtransactions.R'
         'f_generics_clvfittedtransactionsdyncov.R'
@@ -75,8 +76,8 @@ Collate: 'CLVTools.R' 'RcppExports.R' 'all_generics.R'
         'f_generics_clvfittedtransactionsstaticcov_estimate.R'
         'f_generics_clvpnbddyncov.R' 'f_interface_bgbb.R'
         'f_interface_bgnbd.R' 'f_interface_clvdata.R'
-        'f_interface_gg.R' 'f_interface_ggomnbd.R' 'f_interface_pnbd.R'
-        'f_interface_predict_clvfittedspending.R'
+        'f_interface_gg.R' 'f_interface_ggomnbd.R' 'f_interface_pmf.R'
+        'f_interface_pnbd.R' 'f_interface_predict_clvfittedspending.R'
         'f_interface_predict_clvfittedtransactions.R'
         'f_interface_setdynamiccovariates.R'
         'f_interface_setstaticcovariates.R' 'f_s3generics_clvdata.R'
@@ -96,13 +97,13 @@ Collate: 'CLVTools.R' 'RcppExports.R' 'all_generics.R'
         'pnbd_dyncov_palive.R'
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
-Packaged: 2021-10-13 16:51:34 UTC; patrik
+Packaged: 2022-01-08 20:04:28 UTC; patrik
 Author: Patrick Bachmann [cre, aut],
   Niels Kuebler [aut],
   Markus Meierer [aut],
   Jeffrey Naef [aut],
   Elliot Oblander [aut],
   Patrik Schilter [aut]
-Maintainer: Patrick Bachmann <patrick.bachmann@business.uzh.ch>
+Maintainer: Patrick Bachmann <pbachma@ethz.ch>
 Repository: CRAN
-Date/Publication: 2021-10-18 22:50:09 UTC
+Date/Publication: 2022-01-09 01:32:48 UTC
