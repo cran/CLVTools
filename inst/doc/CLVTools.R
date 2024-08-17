@@ -40,18 +40,14 @@ clv.apparel
 summary(clv.apparel)
 
 ## ----estimate-model-formula---------------------------------------------------
-   est.pnbd <- latentAttrition(~pnbd(), 
-                               data=clv.apparel)
+   est.pnbd <- latentAttrition(formula = , family = pnbd, data=clv.apparel)
    est.pnbd
 
 ## ----estimate-model-formula2, eval=FALSE--------------------------------------
-#    est.pnbd <- latentAttrition(~pnbd(start.params.model=c(r=1, alpha=10, s=2, beta=8)),
-#                                      optimx.args = list(control=list(trace=5),
+#    est.pnbd <- latentAttrition(formula = , family = pnbd, data=clv.apparel,
+#                                optimx.args = list(control=list(trace=5),
 #                                         method="Nelder-Mead"),
-#                                data=clv.apparel)
-
-## ----estimate-model-formula3, eval=FALSE--------------------------------------
-#      est.pnbd <- latentAttrition(data(split=40, format=ymd, unit=w)~pnbd(), data=apparelTrans)
+#                                start.params.model=c(r=1, alpha=10, s=2, beta=8))
 
 ## ----estimate-model, eval=FALSE-----------------------------------------------
 #      est.pnbd <- pnbd(clv.data = clv.apparel)
@@ -91,10 +87,9 @@ vcov(est.pnbd)
 
 
 ## ----estimate-ggomnbd-formula, eval=FALSE-------------------------------------
-#    est.ggomnbd <- latentAttrition(~ggomnbd(start.params.model=
-#                                            c(r=0.7, alpha=5, b=0.005,  s=0.02, beta=0.001)),
-#                                      optimx.args = list(method="Nelder-Mead"),
-#                                   data=clv.apparel)
+#    est.ggomnbd <- latentAttrition(formula = , family = ggomnbd, data=clv.apparel,
+#                                   optimx.args = list(method="Nelder-Mead")
+#                                   start.params.model=c(r=0.7, alpha=5, b=0.005,  s=0.02, beta=0.001))
 
 ## ----estimate-ggomnbd, eval=FALSE---------------------------------------------
 #  est.ggomnbd <- ggomnbd(clv.data = clv.apparel,
@@ -159,22 +154,20 @@ clv.static<- SetStaticCovariates(clv.data = clv.apparel,
 #                                       name.date = "Cov.Date")
 
 ## ----static-cov-estimate-formula1, message=TRUE, warning=FALSE, eval=FALSE----
-#    est.pnbd.static <- latentAttrition(~pnbd()|.|., clv.static)
+#    est.pnbd.static <- latentAttrition(formula = ~ .|., family = pnbd, data=clv.static)
 
 ## ----static-cov-estimate-formula2, warning=FALSE, eval=FALSE------------------
-#    est.pnbd.static <- latentAttrition(~pnbd()|Gender|Channel+Gender, clv.static)
+#    est.pnbd.static <- latentAttrition(formula = ~ Gender|Channel+Gender,
+#                                       family = pnbd, data=clv.static)
 #  
 
-## ---- static-covariates-formula3, warning=FALSE, eval=FALSE-------------------
-#    est.pnbd.static <- latentAttrition(~pnbd()|Channel+Gender|I(log(Channel+2)), clv.static)
-
-## ----static-covariates-formula4, warning=FALSE, eval=FALSE--------------------
-#    est.pnbd.static <- latentAttrition(data()~pnbd()|.|.,
-#                                       data=apparelTrans, cov=apparelStaticCov)
+## ----static-covariates-formula3, warning=FALSE, eval=FALSE--------------------
+#    est.pnbd.static <- latentAttrition(formula = ~ Channel+Gender|I(log(Channel+2)),
+#                                       family = pnbd, data=clv.static)
 
 ## ----dyn-cov-formula1, eval=FALSE---------------------------------------------
-#  est.pnbd.dyn <- latentAttrition(~pnbd()|.|., optimx.args = list(control=list(trace=5)),
-#                                  clv.dyn)
+#  est.pnbd.dyn <- latentAttrition(formula = ~ .|., family = pnbd, data = clv.dyn,
+#                                  optimx.args = list(control=list(trace=5)))
 
 ## ----static-cov-estimate, message=TRUE, warning=FALSE-------------------------
 est.pnbd.static <- pnbd(clv.static, 
@@ -193,8 +186,8 @@ est.pnbd.static <- pnbd(clv.static,
 summary(est.pnbd.static)
 
 ## ----cor-formula1, eval=FALSE-------------------------------------------------
-#  est.pnbd.cor <- latentAttrition(~pnbd(use.cor=TRUE),
-#                  data=clv.apparel)
+#  est.pnbd.cor <- latentAttrition(formula = , family = pnbd,
+#                                  use.cor=TRUE, data=clv.apparel)
 
 ## ----Cov-cor, eval=FALSE------------------------------------------------------
 #  est.pnbd.cor <- pnbd(clv.apparel,
@@ -202,7 +195,8 @@ summary(est.pnbd.static)
 #  summary(est.pnbd.cor)
 
 ## ----reg-formula, eval=FALSE--------------------------------------------------
-#  est.pnbd.reg <- latentAttrition(~pnbd()|.|.|regularization(life=3, trans=8), clv.static)
+#  est.pnbd.reg <- latentAttrition(formula = ~ .|., family = pnbd,
+#                                  reg.lambdas=c(life=3, trans=8), data=clv.static)
 #  summary(est.pnbd.reg)
 
 ## ----reg-advOptions, eval=FALSE-----------------------------------------------
@@ -212,9 +206,9 @@ summary(est.pnbd.static)
 #  summary(est.pnbd.reg)
 
 ## ----constr-formula, eval=FALSE-----------------------------------------------
-#  est.pnbd.constr <- latentAttrition(~pnbd(names.cov.constr=c("Gender"),
-#                                           start.params.constr = c(Gender = 0.6))|.|.,
-#                                     clv.static)
+#  est.pnbd.constr <- latentAttrition(formula = ~.|., family = pnbd, data = clv.static,
+#                                     names.cov.constr=c("Gender"),
+#                                     start.params.constr = c(Gender = 0.6))
 #  summary(est.pnbd.constr)
 
 ## ----constr-advOptions, eval=FALSE--------------------------------------------
@@ -237,22 +231,17 @@ clv.apparel <- clvdata(apparelTrans,
                        name.price = "Price")
 
 ## ----spending-estimate-formula1-----------------------------------------------
-est.gg <- spending(~gg(),
-         data=clv.apparel)
+est.gg <- spending(family = gg, data=clv.apparel)
 est.gg
 
 ## ----spending-estimate-formula2, eval=FALSE-----------------------------------
-#  est.gg <- spending(~gg(start.params.model=c(p=0.5, q=15, gamma=2)),
-#                         optimx.args = list(control=list(trace=5)),
-#                     data=clv.apparel)
+#  est.gg <- spending(family = gg, data=clv.apparel,
+#                     optimx.args = list(control=list(trace=5)),
+#                     start.params.model=c(p=0.5, q=15, gamma=2))
 
 ## ----spending-estimate-formula3, eval=FALSE-----------------------------------
-#  est.gg <- spending(~gg(remove.first.transaction=FALSE),
-#                     data=clv.apparel)
-
-## ----estimate-model-formula4, eval=FALSE--------------------------------------
-#  est.gg <- spending(data(split=40, format=ymd, unit=w)~gg(),
-#                     data=apparelTrans)
+#  est.gg <- spending(family = gg, data=clv.apparel,
+#                     remove.first.transaction=FALSE)
 
 ## ----spending-estimate-model1, eval=FALSE-------------------------------------
 #  est.gg<- gg(clv.data = clv.apparel)
