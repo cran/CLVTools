@@ -28,7 +28,7 @@ apparelTrans
 clv.apparel <- clvdata(apparelTrans,  
                        date.format="ymd", 
                        time.unit = "week",
-                       estimation.split = 40,
+                       estimation.split = 104,
                        name.id = "Id",
                        name.date = "Date",
                        name.price = "Price")
@@ -88,7 +88,7 @@ vcov(est.pnbd)
 
 ## ----estimate-ggomnbd-formula, eval=FALSE-------------------------------------
 #    est.ggomnbd <- latentAttrition(formula = , family = ggomnbd, data=clv.apparel,
-#                                   optimx.args = list(method="Nelder-Mead")
+#                                   optimx.args = list(method="Nelder-Mead"),
 #                                   start.params.model=c(r=0.7, alpha=5, b=0.005,  s=0.02, beta=0.001))
 
 ## ----estimate-ggomnbd, eval=FALSE---------------------------------------------
@@ -148,8 +148,8 @@ clv.static<- SetStaticCovariates(clv.data = clv.apparel,
 #  clv.dyn <- SetDynamicCovariates(clv.data = clv.apparel,
 #                                       data.cov.life = apparelDynCov,
 #                                       data.cov.trans = apparelDynCov,
-#                                       names.cov.life = c("Marketing", "Gender", "Channel"),
-#                                       names.cov.trans = c("Marketing", "Gender", "Channel"),
+#                                       names.cov.life = c("High.Season", "Gender", "Channel"),
+#                                       names.cov.trans = c("High.Season", "Gender", "Channel"),
 #                                       name.id = "Id",
 #                                       name.date = "Cov.Date")
 
@@ -178,8 +178,8 @@ est.pnbd.static <- pnbd(clv.static,
 ## ----dyn-cov-estimate, eval=FALSE---------------------------------------------
 #  est.pnbd.dyn <- pnbd(clv.dyn,
 #                       start.params.model = c(r=1, alpha = 2, s = 1, beta = 2),
-#                       start.params.life = c(Marketing=0.5, Gender=0.6, Channel=0.4),
-#                       start.params.trans = c(Marketing=0.5, Gender=0.6, Channel=0.4),
+#                       start.params.life = c(High.Season=0.5, Gender=0.6, Channel=0.4),
+#                       start.params.trans = c(High.Season=0.5, Gender=0.6, Channel=0.4),
 #                       optimx.args = list(control=list(trace=5)))
 
 ## ----Cov-summary--------------------------------------------------------------
