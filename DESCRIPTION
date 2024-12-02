@@ -1,7 +1,7 @@
 Package: CLVTools
 Title: Tools for Customer Lifetime Value Estimation
-Version: 0.11.1
-Date: 2024-10-10
+Version: 0.11.2
+Date: 2024-12-01
 Authors@R: c(
     person(given="Patrick", family="Bachmann",    email = "pbachma@ethz.ch", role = c("cre","aut")),
     person(given="Niels",   family="Kuebler",     email = "niels.kuebler@uzh.ch", role = "aut"),
@@ -105,7 +105,7 @@ RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 Config/testthat/parallel: false
 Config/testthat/edition: 3
-Packaged: 2024-10-13 01:23:59 UTC; rstudio
+Packaged: 2024-12-02 21:43:54 UTC; rstudio
 Author: Patrick Bachmann [cre, aut],
   Niels Kuebler [aut],
   Markus Meierer [aut],
@@ -114,4 +114,4 @@ Author: Patrick Bachmann [cre, aut],
   Patrik Schilter [aut]
 Maintainer: Patrick Bachmann <pbachma@ethz.ch>
 Repository: CRAN
-Date/Publication: 2024-10-13 04:20:02 UTC
+Date/Publication: 2024-12-02 22:40:02 UTC
